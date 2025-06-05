@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Compare Inventories</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+  <h2>Compare Inventories by Style Number</h2>
+
+  <label for="file1"><strong>Existing Inventory File:</strong></label>
+  <input type="file" id="file1" accept=".xlsx,.xls,.csv,.tsv,.txt" />
+
+  <label for="file2"><strong>New Inventory File:</strong></label>
+  <input type="file" id="file2" accept=".xlsx,.xls,.csv,.tsv,.txt" />
+
+  <button id="compareButton">Compare</button>
+
+  <div id="progress-container">
+    <div id="progress-bar"></div>
+  </div>
+
+  <div id="status-message"></div>
+
+  <div id="download-controls" style="display: none;">
+    <label for="outputFormat"><strong>Download As:</strong></label>
+    <select id="outputFormat">
+      <option value="xlsx">Excel (.xlsx)</option>
+      <option value="csv">CSV (.csv)</option>
+      <option value="txt">Text (.txt)</option>
+    </select>
+    <button id="downloadButton">Download</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
