@@ -4,6 +4,11 @@ let outputWorkbook = null;
 document.getElementById('compareButton').addEventListener('click', compareFiles);
 document.getElementById('downloadButton').addEventListener('click', downloadFile);
 
+// Normalize values → lowercase, no spaces
+function normalize(value) {
+  return value.toString().toLowerCase().replace(/\s+/g, '');
+}
+
 function updateProgress(percent) {
   const bar = document.getElementById("progress-bar");
   const container = document.getElementById("progress-container");
@@ -68,7 +73,7 @@ async function compareFiles() {
   for (let i = 1; i < json2.length; i++) {
     const val = json2[i][bodyFabricColIndex];
     if (val !== undefined && val !== null) {
-      styleSet.add(val.toString().trim());
+      styleSet.add(normalize(val));
     }
   }
 
@@ -81,7 +86,7 @@ async function compareFiles() {
   for (let i = 1; i < json1.length; i++) {
     const row = json1[i];
     const cell = row[handleColIndex];
-    if (cell && styleSet.has(cell.toString().trim())) {
+    if (cell && styleSet.has(normalize(cell))) {
       filteredData.push(row);
       matchCount++;
     }
