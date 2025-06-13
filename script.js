@@ -4,9 +4,12 @@ let outputWorkbook = null;
 document.getElementById('compareButton').addEventListener('click', compareFiles);
 document.getElementById('downloadButton').addEventListener('click', downloadFile);
 
-// Normalize values → lowercase, no spaces
+// Normalize values → lowercase, no spaces, no dashes/slashes/dots/underscores/commas
 function normalize(value) {
-  return value.toString().toLowerCase().replace(/\s+/g, '');
+  return value
+    .toString()
+    .toLowerCase()
+    .replace(/[\s\-\/\\\.,_]+/g, '');
 }
 
 function updateProgress(percent) {
@@ -166,3 +169,4 @@ function s2ab(s) {
   for (let i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
   return buf;
 }
+
